@@ -14,11 +14,11 @@ def get_files(rootDir):
             (path)
     return files
 
-def do_composite(files):
+def do_composite(files, target_file):
     temp = files[0]
     print temp
     result = AudioSegment.from_mp3(temp)
-    result.export('D:/all.mp3', format="mp3")
+    result.export(target_file, format="mp3")
     del files[0]
     for s in files:
         curr = AudioSegment.from_mp3(s)
@@ -28,4 +28,4 @@ def do_composite(files):
 
 if __name__ == '__main__':
     sounds = get_files('D:/sound/')
-    do_composite(sounds)
+    do_composite(sounds,'D:/all.mp3')
